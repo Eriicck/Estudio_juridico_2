@@ -1,0 +1,436 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  background-color: #fff;
+  line-height: 1.6;
+}
+
+.hero-overlay h2{
+color: #ebe5e5;
+}
+
+/* NAVBAR */
+.navbar {
+  background-color: rgba(0, 51, 102); /* azul oscuro con transparencia */
+  position: fixed;
+  transition: top 0.3s ease, padding 0.3s ease;
+  width: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
+  padding: 15px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.logo img {
+  height: 40px; /* Ajustá este valor según necesites */
+  width: auto;
+  display: block;
+}
+
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links li a:hover {
+  text-decoration: underline;
+}
+
+.toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 8px 15px; /* más delgado */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #003366;
+    width: 100%;
+    display: none;
+    padding: 20px 0;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .toggle {
+    display: block;
+  }
+
+  .logo img {
+    height: 35px;
+  }
+
+
+
+}
+
+.hero {
+  background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=1650&q=80');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-image 1s ease-in-out;
+  margin-top: o;
+  padding-top: 60px;
+}
+
+.hero-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 40px;
+  text-align: center;
+  color: white;
+}
+
+.hero h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2em;
+}
+
+@media screen and (max-width: 768px) {
+  .hero {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 60vh; /* más bajo para móviles */
+    padding-top: 60px;
+  }
+
+  .hero-overlay {
+    padding: 20px;
+  }
+
+  .hero p {
+    font-size: 1em;
+  }
+}
+
+
+section {
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.destacados {
+  background-color: #f9f9f9;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.card {
+  flex: 1 1 250px;
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 60px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  color: #003366;
+  margin-bottom: 10px;
+}
+
+
+.beneficios {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  text-align: left;
+  max-width: 900px;
+  margin: auto;
+}
+
+.beneficios h4 {
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.beneficios p {
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+
+h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #003366;
+}
+
+.services ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input, textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+}
+
+button {
+  background-color: #003366;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #005199;
+}
+
+.footer {
+  background-color: #002244;
+  color: white;
+  padding: 40px 20px 20px;
+  text-align: center;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.footer-logo h3 {
+  margin-bottom: 5px;
+  font-size: 24px;
+}
+
+.footer-logo p {
+  font-size: 14px;
+  opacity: 0.85;
+  margin-bottom: 20px;
+}
+
+.footer-redes {
+  margin-bottom: 20px;
+}
+
+.footer-redes a {
+  margin: 0 10px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.footer-redes a:hover {
+  transform: scale(1.2);
+}
+
+.footer-redes img {
+  width: 30px;
+  height: 30px;
+}
+
+.footer-copy p {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  z-index: 1000;
+}
+
+.whatsapp-float img {
+  width: 100%;
+  height: auto;
+}
+
+.mensaje-ok {
+  color: green;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.mensaje-error {
+  color: red;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+
+/* Sección Servicios */
+.servicios {
+  background: #f5f5f5;
+  padding: 60px 20px;
+  text-align: center;
+}
+.contenedor-servicios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+.servicio {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.08);
+  padding: 20px;
+  max-width: 300px;
+}
+.servicio img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+.servicio h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.servicio p {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Sección Ventajas */
+
+/* .ventajas {
+  background-color: #003366;
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.ventajas h2 {
+  color: white;
+  margin-bottom: 40px;
+} */
+
+.ventajas {
+  background: #e0ebf5;
+  padding: 60px 20px;
+  text-align: center;
+}
+.contenedor-ventajas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+.ventaja {
+  max-width: 300px;
+}
+.ventaja h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #002244;
+}
+.ventaja p {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contenedor-servicios,
+  .contenedor-ventajas {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.mapa-contacto {
+  background: #f9f9f9;
+  padding: 60px 20px;
+  text-align: center;
+}
+.mapa-contacto h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #002244;
+}
+.mapa-contacto p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 30px;
+}
+.contenedor-mapa {
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
