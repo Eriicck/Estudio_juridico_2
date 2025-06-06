@@ -66,8 +66,8 @@ const hero = document.querySelector('.hero');
 
 const heroImages = [
   'https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=1650&q=80',
-  'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1650&q=80',
-  'https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=1650&q=80'
+  'https://www.vosseler-abogados.es/wp-content/uploads/2021/04/accidente-trafico.jpg',
+  'https://concepto.de/wp-content/uploads/2014/02/derecho-laboral-1-e1551651916418.jpg'
 ];
 
 let currentHeroIndex = 0;
