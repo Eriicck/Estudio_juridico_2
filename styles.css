@@ -1,436 +1,542 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  color: #333;
-  background-color: #fff;
-  line-height: 1.6;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    background-color: #fff;
+    line-height: 1.6;
 }
 
-.hero-overlay h2{
-color: #ebe5e5;
+h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #003366;
+    text-align: center; /* Centrado por defecto para títulos de sección */
 }
 
-/* NAVBAR */
+/* --- NAVBAR --- */
 .navbar {
-  background-color: rgba(0, 51, 102); /* azul oscuro con transparencia */
-  position: fixed;
-  transition: top 0.3s ease, padding 0.3s ease;
-  width: 100%;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 999;
-  padding: 15px 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 51, 102, 0.95); /* azul oscuro con ligera transparencia */
+    position: fixed;
+    transition: top 0.3s ease, padding 0.3s ease;
+    width: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 999;
+    padding: 15px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .container {
-  max-width: 1100px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 20px;
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
 }
 
 .logo img {
-  height: 40px; /* Ajustá este valor según necesites */
-  width: auto;
-  display: block;
+    height: 40px;
+    width: auto;
+    display: block;
 }
 
-
 .nav-links {
-  list-style: none;
-  display: flex;
-  gap: 20px;
+    list-style: none;
+    display: flex;
+    gap: 20px;
 }
 
 .nav-links li a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500; /* Asegúrate de que tu fuente Roboto tenga este peso */
+    padding: 5px 0; /* Pequeño padding para el área de hover */
+    position: relative;
 }
 
-.nav-links li a:hover {
-  text-decoration: underline;
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    left: 0;
+    bottom: 0;
+    transition: width 0.3s ease;
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
 }
 
 .toggle {
-  display: none;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 2em;
-  cursor: pointer;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .navbar {
-    padding: 8px 15px; /* más delgado */
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .nav-links {
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    right: 0;
-    background-color: #003366;
-    width: 100%;
     display: none;
-    padding: 20px 0;
-  }
-
-  .nav-links.show {
-    display: flex;
-  }
-
-  .toggle {
-    display: block;
-  }
-
-  .logo img {
-    height: 35px;
-  }
-
-
-
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8em; /* Un poco más grande para mejor visibilidad */
+    cursor: pointer;
+    padding: 5px; /* Pequeño padding para el área de clic */
 }
 
+/* Responsive Navbar */
+@media screen and (max-width: 768px) {
+    .navbar {
+        padding: 8px 15px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* Asegura que empiece justo debajo del navbar */
+        right: 0;
+        left: 0; /* Para que ocupe todo el ancho */
+        background-color: #003366; /* Color de fondo del menú */
+        width: 100%;
+        display: none;
+        padding: 0; /* Padding gestionado por los li */
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Sombra para destacarlo */
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Transición para la animación */
+        transform: translateY(-100%); /* Inicialmente fuera de vista */
+        opacity: 0; /* Inicialmente transparente */
+    }
+
+    .nav-links.show {
+        display: flex;
+        transform: translateY(0); /* Desliza hacia abajo */
+        opacity: 1; /* Se hace visible */
+    }
+
+    .nav-links li {
+        width: 100%; /* Asegura que cada ítem ocupe todo el ancho */
+        text-align: center; /* Centra el texto */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separador sutil */
+    }
+
+    .nav-links li:last-child {
+        border-bottom: none; /* Elimina el borde del último elemento */
+    }
+
+    .nav-links li a {
+        display: block; /* Para que el padding funcione en todo el área del link */
+        padding: 15px 20px; /* Ajusta el padding para mayor área de clic */
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        transition: background-color 0.2s ease, color 0.2s ease; /* Transición para hover */
+    }
+
+    .nav-links li a:hover {
+        background-color: #005199; /* Cambio de color al pasar el mouse */
+        color: #fff;
+        text-decoration: none; /* Asegura que no haya subrayado en hover */
+    }
+
+    .toggle {
+        display: block;
+    }
+
+    .logo img {
+        height: 35px;
+    }
+}
+
+/* --- HERO SECTION --- */
 .hero {
-  background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=1650&q=80');
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-image 1s ease-in-out;
-  margin-top: o;
-  padding-top: 60px;
+    background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=1650&q=80');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-image 1s ease-in-out;
+    margin-top: 0; /* Corrección del error tipográfico y asegurar no hay margen */
+    padding-top: 0; /* Asegura que no haya padding superior */
 }
 
 .hero-overlay {
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 40px;
-  text-align: center;
-  color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    text-align: center;
+    color: white;
+    width: 100%; /* Para que el overlay ocupe todo el ancho si es necesario */
 }
 
-.hero h1 {
-  font-size: 3em;
-  margin-bottom: 10px;
+.hero h2 { /* Cambiado de h1 a h2 según tu HTML */
+    font-size: 3em;
+    margin-bottom: 10px;
+    color: #ebe5e5; /* Color del hero-overlay h2 */
 }
 
 .hero p {
-  font-size: 1.2em;
+    font-size: 1.2em;
 }
 
 @media screen and (max-width: 768px) {
-  .hero {
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 60vh; /* más bajo para móviles */
-    padding-top: 60px;
-  }
+    .hero {
+        background-size: cover; /* Asegura que la imagen cubra todo, evita fondo blanco */
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 60vh; /* más bajo para móviles */
+        padding-top: 0; /* Asegura que no haya padding superior */
+    }
 
-  .hero-overlay {
-    padding: 20px;
-  }
+    .hero-overlay {
+        padding: 20px;
+    }
 
-  .hero p {
-    font-size: 1em;
-  }
+    .hero h2 {
+        font-size: 2em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
 }
 
-
+/* --- GENERAL SECTIONS --- */
 section {
-  padding: 60px 20px;
-  max-width: 900px;
-  margin: 0 auto;
+    padding: 60px 20px;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
+/* --- SECCIÓN DESTACADOS (TARJETAS DE SERVICIOS PRINCIPALES) --- */
 .destacados {
-  background-color: #f9f9f9;
-  text-align: center;
-  padding: 60px 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+    padding: 60px 20px;
 }
 
 .cards {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 30px;
-  margin-top: 30px;
+    display: flex;
+    justify-content: center; /* Centrar las tarjetas */
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 30px;
 }
 
 .card {
-  flex: 1 1 250px;
-  background-color: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  transition: transform 0.3s;
-  text-align: center;
+    flex: 1 1 280px; /* Flexibilidad para 3 columnas en desktop, 2 en tablet, 1 en mobile */
+    max-width: 300px; /* Límite para que no crezcan demasiado */
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s;
+    text-align: center;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+    transform: translateY(-5px);
 }
 
 .card img {
-  width: 60px;
-  margin-bottom: 15px;
+    width: 60px;
+    margin-bottom: 15px;
 }
 
 .card h3 {
-  color: #003366;
-  margin-bottom: 10px;
+    color: #003366;
+    margin-bottom: 10px;
 }
 
+/* --- SECCIÓN ¿POR QUÉ ELEGIRNOS? (BENEFICIOS) --- */
+.ventajas-elegirnos { /* Renombrada para evitar conflictos con otras secciones "ventajas" */
+    background-color: #e0ebf5; /* Un color suave para diferenciar */
+    padding: 60px 20px;
+    text-align: center;
+}
 
 .beneficios {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  text-align: left;
-  max-width: 900px;
-  margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    text-align: left;
+    max-width: 900px;
+    margin: auto;
 }
 
 .beneficios h4 {
-  margin-bottom: 8px;
-  font-weight: 700;
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: #002244;
 }
 
 .beneficios p {
-  font-weight: 400;
-  opacity: 0.9;
+    font-weight: 400;
+    opacity: 0.9;
 }
 
-
-h2 {
-  font-size: 2em;
-  margin-bottom: 20px;
-  color: #003366;
+/* --- SECCIÓN OTRAS ÁREAS DE PRÁCTICA (SERVICIOS ADICIONALES) --- */
+.servicios-adicionales { /* Renombrada para claridad */
+    background: #f5f5f5;
+    padding: 60px 20px;
+    text-align: center;
+}
+.contenedor-servicios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    max-width: 1000px; /* Permite que el contenedor se expanda un poco más */
+    margin: 0 auto;
+}
+.servicio {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.08);
+    padding: 20px;
+    flex: 1 1 calc(50% - 15px); /* Dos columnas en pantallas medianas */
+    max-width: 380px; /* Límite para que no se estiren demasiado */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.servicio img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    max-height: 180px; /* Limitar altura de imagen */
+    object-fit: cover; /* Asegura que la imagen cubra el espacio sin distorsión */
+}
+.servicio h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #003366;
+}
+.servicio p {
+    font-size: 14px;
+    color: #555;
 }
 
-.services ul {
-  list-style-type: disc;
-  padding-left: 20px;
+/* Media query para servicios adicionales en dispositivos muy pequeños */
+@media (max-width: 580px) {
+    .servicio {
+        flex: 1 1 100%; /* Ocupa todo el ancho disponible */
+        max-width: 350px; /* Limita el ancho máximo para dispositivos muy anchos en vista móvil */
+    }
+}
+
+/* --- SECCIÓN NUESTROS DIFERENCIALES (VENTAJAS SECUNDARIAS) --- */
+.nuestros-diferenciales { /* Renombrada para claridad */
+    background: #e0ebf5;
+    padding: 60px 20px;
+    text-align: center;
+}
+.contenedor-ventajas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+.ventaja {
+    max-width: 300px;
+    background: white; /* Añadir fondo blanco para destacarlas */
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.ventaja h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #002244;
+}
+.ventaja p {
+    font-size: 14px;
+    color: #333;
+}
+
+/* --- SECCIÓN CONTACTO --- */
+.contact {
+    padding: 60px 20px;
+    max-width: 700px; /* Limitar ancho del formulario */
+    margin: 0 auto;
+    text-align: center;
 }
 
 form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 30px;
 }
 
 input, textarea {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1em;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+    width: 100%; /* Asegura que ocupen todo el ancho disponible */
+}
+
+textarea {
+    resize: vertical; /* Permite redimensionar verticalmente */
+    min-height: 100px;
 }
 
 button {
-  background-color: #003366;
-  color: white;
-  border: none;
-  padding: 12px;
-  border-radius: 6px;
-  font-size: 1em;
-  cursor: pointer;
+    background-color: #003366;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #005199;
-}
-
-.footer {
-  background-color: #002244;
-  color: white;
-  padding: 40px 20px 20px;
-  text-align: center;
-}
-
-.footer-container {
-  max-width: 1100px;
-  margin: auto;
-}
-
-.footer-logo h3 {
-  margin-bottom: 5px;
-  font-size: 24px;
-}
-
-.footer-logo p {
-  font-size: 14px;
-  opacity: 0.85;
-  margin-bottom: 20px;
-}
-
-.footer-redes {
-  margin-bottom: 20px;
-}
-
-.footer-redes a {
-  margin: 0 10px;
-  display: inline-block;
-  transition: transform 0.3s ease;
-}
-
-.footer-redes a:hover {
-  transform: scale(1.2);
-}
-
-.footer-redes img {
-  width: 30px;
-  height: 30px;
-}
-
-.footer-copy p {
-  font-size: 13px;
-  opacity: 0.7;
-}
-
-
-.whatsapp-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 60px;
-  height: 60px;
-  z-index: 1000;
-}
-
-.whatsapp-float img {
-  width: 100%;
-  height: auto;
+    background-color: #005199;
 }
 
 .mensaje-ok {
-  color: green;
-  margin-top: 10px;
-  font-weight: bold;
+    color: green;
+    margin-top: 10px;
+    font-weight: bold;
 }
 
 .mensaje-error {
-  color: red;
-  margin-top: 10px;
-  font-weight: bold;
+    color: red;
+    margin-top: 10px;
+    font-weight: bold;
 }
 
-
-/* Sección Servicios */
-.servicios {
-  background: #f5f5f5;
-  padding: 60px 20px;
-  text-align: center;
-}
-.contenedor-servicios {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
-}
-.servicio {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.08);
-  padding: 20px;
-  max-width: 300px;
-}
-.servicio img {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 15px;
-}
-.servicio h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-.servicio p {
-  font-size: 14px;
-  color: #555;
+/* --- WHATSAPP FLOAT BUTTON --- */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    z-index: 1000;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
 }
 
-/* Sección Ventajas */
-
-/* .ventajas {
-  background-color: #003366;
-  color: white;
-  padding: 60px 20px;
-  text-align: center;
+.whatsapp-float:hover {
+    transform: scale(1.1);
 }
 
-.ventajas h2 {
-  color: white;
-  margin-bottom: 40px;
-} */
-
-.ventajas {
-  background: #e0ebf5;
-  padding: 60px 20px;
-  text-align: center;
-}
-.contenedor-ventajas {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
-}
-.ventaja {
-  max-width: 300px;
-}
-.ventaja h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-  color: #002244;
-}
-.ventaja p {
-  font-size: 14px;
-  color: #333;
+.whatsapp-float img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .contenedor-servicios,
-  .contenedor-ventajas {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
+/* --- SECCIÓN MAPA DE CONTACTO --- */
 .mapa-contacto {
-  background: #f9f9f9;
-  padding: 60px 20px;
-  text-align: center;
+    background: #f9f9f9;
+    padding: 60px 20px;
+    text-align: center;
 }
 .mapa-contacto h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
-  color: #002244;
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #002244;
 }
 .mapa-contacto p {
-  font-size: 16px;
-  color: #555;
-  margin-bottom: 30px;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 30px;
 }
 .contenedor-mapa {
-  max-width: 900px;
-  margin: 0 auto;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    max-width: 900px;
+    margin: 0 auto 20px auto; /* Añadido margen inferior para la dirección */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+.mapa-direccion {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #003366;
+}
+
+/* --- FOOTER --- */
+.footer {
+    background-color: #002244;
+    color: white;
+    padding: 40px 20px 20px;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.footer-logo h3 {
+    margin-bottom: 5px;
+    font-size: 24px;
+}
+
+.footer-logo p {
+    font-size: 14px;
+    opacity: 0.85;
+    margin-bottom: 20px;
+}
+
+.footer-redes {
+    margin-bottom: 20px;
+}
+
+.footer-redes a {
+    margin: 0 10px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.footer-redes a:hover {
+    transform: scale(1.2);
+}
+
+.footer-redes img {
+    width: 30px;
+    height: 30px;
+}
+
+.footer-copy p {
+    font-size: 13px;
+    opacity: 0.7;
+}
+
+/* --- RESPONSIVE GENERAL --- */
+@media (max-width: 768px) {
+    section {
+        padding: 40px 15px; /* Reducir padding en móviles */
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    .cards, .beneficios, .contenedor-servicios, .contenedor-ventajas {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card, .servicio, .ventaja {
+        max-width: 90%; /* Ajuste para que ocupen más ancho en móviles */
+        width: 100%; /* Asegurar que no haya exceso de margen */
+    }
+
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 15px;
+        right: 15px;
+    }
 }
